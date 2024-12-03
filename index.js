@@ -26,8 +26,27 @@ let persons = [
   }
 ]
 
+const howManyPersons = () => {
+  const max = persons.length > 0
+    ? Math.max(...persons.map(n => Number(n.id)))
+    : 0
+  return max
+}
+
 app.get('/api/persons', (request, response) => {
   response.json(persons)
+})
+
+app.get('/info', (request, response) => {
+  response.send
+  (
+    `Phonebook has info for ${howManyPersons()} people <br/>
+    ${new Date(Date.now()).toString()}`
+  )
+  
+  
+
+
 })
 
 const PORT = 3001
